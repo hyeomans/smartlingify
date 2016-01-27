@@ -1,0 +1,15 @@
+{
+  "name": "smartlingify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hector Yeomans (me a_t hyeomans.com)",
+  "license": "MIT",
+  "dependencies": {
+    "filewalker": "0.1.2",
+    "moment": "2.11.1"
+  }
+}
