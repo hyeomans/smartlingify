@@ -6,7 +6,6 @@ var format      = require('stringformat');
 
 var apiKey;
 var projectId;
-var files;
 var verboseMode;
 
 module.exports = function(smartlingApiKey, smartlingProjectId) {
@@ -23,7 +22,7 @@ module.exports = function(smartlingApiKey, smartlingProjectId) {
                 return downloadRootFiles(files);
               });  
   }
-}
+};
 
 function downloadRootFiles(files) {
   var url = 'https://api.smartling.com/v1/file/get?apiKey={apiKey}&fileUri={fileUri}&projectId={projectId}';
@@ -51,9 +50,12 @@ function downloadFile(file, url) {
             if(verboseMode) {
               console.log('Downloaded:', file.relativePath);
             }
-            
+
             return writeFile(file.absolutePath, response, 'utf-8').catch(function (err) {
               console.log('There was an error while writing the file:', file.relativePath);
+              if(verboseMode) {
+                console.log('The error was:', err);
+              }
             });
           })
           .catch(function (err) {

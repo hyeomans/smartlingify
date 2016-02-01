@@ -12,8 +12,8 @@ var downloadFiles = require('./downloadFiles')(apiKey, projectId);
 var supportedLocales = ['en-AU', 'de-DE', 'ja-JP', 'es-MX', 'fr-CA', 'en-GB'];
 
 recurseFiles(rootPath, fileExtension, supportedLocales)
-  .then(function (files, verbose) {
-    return downloadFiles(files);
+  .then(function (files) {
+    return downloadFiles(files, verbose);
   })
   .then(function (report) {
     console.log('The following files were not found in Smartling:');
