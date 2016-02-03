@@ -1,44 +1,44 @@
 'use strict';
-var chai            = require('chai');
-var chaiAsPromised  = require("chai-as-promised");
-var proxyquire      = require('proxyquire').noPreserveCache();
-var Promise         = require('bluebird');
-var sinon           = require('sinon');
+let chai            = require('chai');
+let chaiAsPromised  = require("chai-as-promised");
+let proxyquire      = require('proxyquire').noPreserveCache();
+let Promise         = require('bluebird');
+let sinon           = require('sinon');
 
-var mockApiKey = 'mockApiKey';
-var mockProjectId = 'mockProjectId';
-var expect = chai.expect;
+let mockApiKey = 'mockApiKey';
+let mockProjectId = 'mockProjectId';
+let expect = chai.expect;
 
 chai.use(chaiAsPromised);
-var stubs = {
+let stubs = {
     'request-promise': {}
 };
 
-var supportedLocales;
+let supportedLocales;
 
-describe('Supported Locales', function () {
-    describe('When request is successfull', function () {
-        before(function () {
+describe('Supported Locales', () => {
+    describe('When request is successfull', () => {
+        before(() => {
             stubs['request-promise'].get = sinon.stub().returns(Promise.resolve(goodResponse()));
             supportedLocales = proxyquire('../src/supported-locales', stubs)(mockApiKey, mockProjectId);
         });
 
-        it('should retrieve locales from smartling', function () {
-            var expectedResult = [ 'en-AU', 'en-GB', 'fr-CA', 'de-DE', 'ja-JP', 'es-MX' ];
-            var result = supportedLocales();
+        it('should retrieve locales from smartling', () => {
+            let expectedResult = [ 'en-AU', 'en-GB', 'fr-CA', 'de-DE', 'ja-JP', 'es-MX' ];
+            let result = supportedLocales();
             return expect(result).to.eventually.eql(expectedResult);
         });
     });
 
-    describe('When request fails', function () {
-        beforeEach(function () {
+    describe('When request fails', () => {
+        beforeEach(() => {
             stubs['request-promise'].get = sinon.stub().returns(Promise.reject(invalidCredentials()));
             supportedLocales = proxyquire('../src/supported-locales', stubs)(mockApiKey, mockProjectId);
         });
 
-        it('should return an empty array', function () {
-            var expectedResult = [];
-            var result = supportedLocales();
+        it('should return an empty array', () => {
+            let expectedResult = [];
+            let result = supportedLocales();
             return expect(result).to.eventually.eql(expectedResult);
         });
     });
