@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Hector Yeomans (me a_t hyeomans.com)",
   "license": "MIT",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R dot"
+  },
   "dependencies": {
     "bluebird": "3.1.5",
     "filewalker": "0.1.2",
@@ -13,5 +16,12 @@
     "request-promise": "2.0.0",
     "stringformat": "0.0.5",
     "yargs": "3.32.0"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "chai-as-promised": "5.2.0",
+    "mocha": "2.4.5",
+    "proxyquire": "1.7.4",
+    "sinon": "1.17.3"
   }
 }
