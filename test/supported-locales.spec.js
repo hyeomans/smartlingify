@@ -1,6 +1,7 @@
 'use strict';
+/* global it, describe, before, beforeEach */
 let chai            = require('chai');
-let chaiAsPromised  = require("chai-as-promised");
+let chaiAsPromised  = require('chai-as-promised');
 let proxyquire      = require('proxyquire').noPreserveCache();
 let Promise         = require('bluebird');
 let sinon           = require('sinon');
@@ -44,15 +45,17 @@ describe('Supported Locales', () => {
     });
 });
 
+/*eslint-disable quotes*/
 function goodResponse() {
     return '{"response":{"code":"SUCCESS","messages":[],"data":{"locales":[{"locale":"en-AU","name":"English' +
         ' (Australia)","translated":"English (Australia)"},{"locale":"en-GB","name":"English (United Kingdom)",' +
         '"translated":"English (United Kingdom)"},{"locale":"fr-CA","name":"French (Canada)","translated":"Franç' +
         'ais (Canada)"},{"locale":"de-DE","name":"German (Germany)","translated":"Deutsch"},{"locale":"ja-JP","' +
         'name":"Japanese","translated":"日本語"},{"locale":"es-MX","name":"Spanish (Mexico)","translated":"Spani' +
-        'sh (Mexico)"}]}}}'
+        'sh (Mexico)"}]}}}';
 }
 
 function invalidCredentials() {
     return '{"response":{"code":"AUTHENTICATION_ERROR","messages":["Bad credentials"],"data":null}}';
 }
+/*eslint-enable quotes*/
