@@ -129,5 +129,5 @@ function ignoreFilesRegex(supportedLocales, fileExtension) {
         return locale + '|';
     });
     var ignoreRegex = format('^(?!.*\\.{0}\\.{1}).*\\.{1}$', ignoreLocales.join(''), fileExtension);
-    return new RegExp(ignoreRegex, 'g');
+    return new RegExp(ignoreRegex, 'gi');
 }
