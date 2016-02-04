@@ -1,15 +1,15 @@
-var argv = require('yargs').argv;
-var apiKey = argv.apiKey;
-var projectId = argv.projectId;
-var fileExtension = argv.fileExtension;
-
-var rootPath = argv.path || './';
-var verbose = argv.verbose || false;
-var downloadFlag = argv.download;
-
-var recurseFiles = require('./recurseFileDirectory');
-var downloadFiles = require('./downloadFiles')(apiKey, projectId);
-var sanityCheck = require('./sanityCheck')(apiKey, projectId);
+//var argv = require('yargs').argv;
+//var apiKey = argv.apiKey;
+//var projectId = argv.projectId;
+//var fileExtension = argv.fileExtension;
+//
+//var rootPath = argv.path || './';
+//var verbose = argv.verbose || false;
+//var downloadFlag = argv.download;
+//
+//var recurseFiles = require('./recurseFileDirectory');
+//var downloadFiles = require('./downloadFiles')(apiKey, projectId);
+//var sanityCheck = require('./sanityCheck')(apiKey, projectId);
 
 //TODO: Get locales from smartling project
 var supportedLocales = ['en-AU', 'de-DE', 'ja-JP', 'es-MX', 'fr-CA', 'en-GB', 'en-gb'];
