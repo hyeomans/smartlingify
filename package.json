@@ -6,7 +6,7 @@
   "author": "Hector Yeomans (me a_t hyeomans.com)",
   "license": "MIT",
   "scripts": {
-    "test": "./node_modules/eslint/bin/eslint.js ./src/**/* && ./node_modules/eslint/bin/eslint.js ./test/**/*  && ./node_modules/mocha/bin/mocha --recursive"
+    "test": "./node_modules/eslint/bin/eslint.js ./src/**/* && ./node_modules/eslint/bin/eslint.js ./test/**/*  && ./node_modules/mocha/bin/mocha --recursive -t 100000"
   },
   "dependencies": {
     "bluebird": "3.1.5",

@@ -70,7 +70,7 @@ function appendSiblings(files, options) {
                         ['projectId', projectId],
                         ['fileUri', smartlingPath],
                         ['locale', locale],
-                        ['overwrite', true],
+                        ['overwrite', 1],
                         ['translationState', 'PUBLISHED'],
                         ['fileType', options.extension]
                     ]

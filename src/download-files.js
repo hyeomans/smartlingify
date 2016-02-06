@@ -1,6 +1,5 @@
 'use strict';
 /* global module*/
-//var rp          = require('request-promise');
 var path        = require('path');
 var Promise     = require('bluebird');
 var fs          = require('fs-extra');
