@@ -37,6 +37,7 @@ describe('Recurse Files', () => {
             expect(result).to.eventually.have.deep.property('[0].absolutePath');
             expect(result).to.eventually.have.deep.property('[0].upload');
             expect(result).to.eventually.have.deep.property('[0].relativePath');
+            expect(result).to.eventually.have.deep.property('[0].smartlingPath');
             return expect(result).to.eventually.have.deep.property('[0].fileUri');
         });
 
@@ -44,6 +45,7 @@ describe('Recurse Files', () => {
             let result = recurseFiles();
             expect(result).to.eventually.have.deep.property('[0].siblings');
             expect(result).to.eventually.have.deep.property('[0].siblings[0].absolutePath');
+            expect(result).to.eventually.have.deep.property('[0].siblings[0].smartlingPath');
             return expect(result).to.eventually.have.deep.property('[0].siblings[0].upload');
         });
 

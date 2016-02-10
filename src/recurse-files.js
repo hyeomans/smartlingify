@@ -13,6 +13,29 @@ var smartlingImport = 'https://api.smartling.com/v1/file/import';
 var apiKey;
 var projectId;
 
+/**
+ * This will return an array of files with "siblings". I call siblings those files that are related to a main file which
+ * I call rootFile. On root file can have many siblings. Those siblings represent each of the supported locales that we
+ * pass in.
+ * The interface for `files` is:
+ * [
+ *   {
+ *     absolutePath: '....',
+ *     relativePath: '....',
+ *     smartlingPath: '....',
+ *     fileUri: '...', This is smartling file uri
+ *     upload: {
+ *       uri: '....', This is smartling upload file uri
+ *       params: '....'
+ *     },
+ *     siblings: [
+ *       {
+ *          //same params that root file
+ *       }
+ *     ]
+ *   }
+ * ]
+ */
 module.exports = function (options) {
     if(!options['smartlingApiKey'] || !options['smartlingProjectId']) {
         throw new Error('Smartling Api key and Project Id are required.');
@@ -62,6 +85,7 @@ function appendSiblings(files, options) {
             prev.push({
                 absolutePath: format('{0}{1}.{2}', fullPathSplitted[0], locale, options.extension),
                 relativePath: format('{0}{1}.{2}', relativePathSplitted[0], locale, options.extension),
+                smartlingPath: smartlingPath,
                 fileUri: format(smartlingSiblingFileUri, apiKey, smartlingPath, projectId, locale),
                 upload: {
                     uri: smartlingImport,
@@ -97,6 +121,7 @@ function recurseDirectory(options, matchRegex) {
                     absolutePath: a,
                     relativePath: p,
                     fileUri: format(smartlingFileUri, apiKey, smartlingPath, projectId),
+                    smartlingPath: smartlingPath,
                     upload: {
                         uri: 'https://api.smartling.com/v1/file/upload',
                         params: [
