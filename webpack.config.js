@@ -3,21 +3,17 @@ const format = require('stringformat');
 const appPath = './src/electron/app';
 
 module.exports = {
-    entry: format('{0}/app.es6', appPath),
+    entry: format('{0}/app.js', appPath),
     output: {
         filename: format('{0}/bundle.js', appPath)
     },
     module: {
         loaders: [
             {
-                test: /\.es6$/,
+                test: /\.css$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'style-loader!css-loader'
             }
         ]
-    },
-
-    resolve: {
-        extensions: ['', '.js', '.es6']
     }
 };

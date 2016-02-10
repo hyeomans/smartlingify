@@ -20,7 +20,7 @@ app.on('ready', () => {
     });
 
     mainWindow.loadURL(format('{0}/index.html', viewsFolder));
-    mainWindow.webContents.openDevTools();
+
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
