@@ -5,6 +5,7 @@ let chaiAsPromised  = require('chai-as-promised');
 let proxyquire      = require('proxyquire').noPreserveCache();
 let Promise         = require('bluebird');
 let sinon           = require('sinon');
+let path            = require('path');
 
 let mockApiKey = 'mockApiKey';
 let mockProjectId = 'mockProjectId';
@@ -21,7 +22,7 @@ describe('Supported Locales', () => {
     describe('When request is successfull', () => {
         before(() => {
             stubs['request-promise'].get = sinon.stub().returns(Promise.resolve(goodResponse()));
-            supportedLocales = proxyquire('../src/supported-locales', stubs)(mockApiKey, mockProjectId);
+            supportedLocales = proxyquire(path.join('..', 'src', 'smartling', 'supported-locales'), stubs)(mockApiKey, mockProjectId);
         });
 
         it('should retrieve locales from smartling', () => {
@@ -34,7 +35,7 @@ describe('Supported Locales', () => {
     describe('When request fails', () => {
         beforeEach(() => {
             stubs['request-promise'].get = sinon.stub().returns(Promise.reject(invalidCredentials()));
-            supportedLocales = proxyquire('../src/supported-locales', stubs)(mockApiKey, mockProjectId);
+            supportedLocales = proxyquire(path.join('..', 'src', 'smartling', 'supported-locales'), stubs)(mockApiKey, mockProjectId);
         });
 
         it('should return an empty array', () => {

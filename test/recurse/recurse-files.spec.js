@@ -9,13 +9,13 @@ let recurseFiles;
 describe('Recurse Files', () => {
     it('should fail if smartling values are not provided', () => {
         expect(() => {
-            require(path.join('..', '..', 'src', 'recurse-files'))({});
+            require(path.join('..', '..', 'src', 'smartling', 'recurse-files'))({});
         }).to.throw('Smartling Api key and Project Id are required.');
     });
 
     it('should fail if values are not provided', () => {
         expect(() => {
-            require(path.join('..', '..', 'src', 'recurse-files'))({smartlingApiKey: 'apiKey', smartlingProjectId: 'projectId'});
+            require(path.join('..', '..', 'src', 'smartling', 'recurse-files'))({smartlingApiKey: 'apiKey', smartlingProjectId: 'projectId'});
         }).to.throw('Path, extension and locales are needed');
     });
 
@@ -29,7 +29,7 @@ describe('Recurse Files', () => {
                 smartlingProjectId: 'mockProject'
             };
 
-            recurseFiles = require(path.join('..', '..', 'src', 'recurse-files'))(options);
+            recurseFiles = require(path.join('..', '..', 'src', 'smartling', 'recurse-files'))(options);
         });
 
         it('result should get desired interface', () => {

@@ -12,7 +12,7 @@ chai.use(chaiAsPromised);
 
 let postStub = sinon.stub();
 
-let uploadMissing = proxyquire(path.join('..', 'src', 'upload-missing'), {
+let uploadMissing = proxyquire(path.join('..', 'src', 'smartling', 'upload-missing'), {
     'request-promise': {
         post: postStub
     }

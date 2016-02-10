@@ -18,7 +18,7 @@ let stubs = {
     }
 };
 
-let downloadFiles = proxyquire(path.join('..', '..', 'src', 'download-files'), stubs);
+let downloadFiles = proxyquire(path.join('..', '..', 'src', 'smartling', 'download-files'), stubs);
 
 describe('Download files', () => {
     it('should be fullfilled', () => {
