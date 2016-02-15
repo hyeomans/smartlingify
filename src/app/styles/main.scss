@@ -1,0 +1,12 @@
+@import "bootstrap";
+
+.parent {
+    display: flex;
+    height: 300px;
+}
+
+.child {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+}

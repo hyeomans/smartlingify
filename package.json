@@ -7,8 +7,8 @@
   "license": "MIT",
   "repository": "https://github.com/hyeomans/smartlingify",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --inline",
-    "electron": "./node_modules/.bin/webpack && ./node_modules/.bin/electron .",
+    "start": "rm -rf build &&  ./node_modules/.bin/webpack-dev-server --inline",
+    "electron": "rm -rf build && mkdir build && cp ./src/electron/main.js ./build/main.js && ./node_modules/.bin/webpack --config webpack-production.config.js -p && ./node_modules/.bin/electron build/main.js",
     "test": "./node_modules/.bin/eslint ./src/**/*.js && ./node_modules/.bin/eslint ./test/**/*  && ./node_modules/mocha/bin/mocha --recursive -t 100000"
   },
   "dependencies": {
@@ -22,21 +22,26 @@
     "yargs": "3.32.0"
   },
   "devDependencies": {
-    "bootstrap": "4.0.0-alpha.2",
+    "angular": "1.5.0",
+    "angular-ui-router": "0.2.18",
+    "bootstrap-sass": "3.3.6",
     "chai": "3.5.0",
     "chai-as-promised": "5.2.0",
     "concurrently": "1.0.0",
     "css-loader": "0.23.1",
     "electron-prebuilt": "0.36.7",
     "eslint": "1.10.3",
+    "file-loader": "0.8.5",
     "html-webpack-plugin": "2.8.1",
     "mocha": "2.4.5",
     "node-sass": "3.4.2",
     "proxyquire": "1.7.4",
+    "raw-loader": "0.5.1",
     "sass-loader": "3.1.2",
     "sinon": "1.17.3",
     "strip-loader": "0.1.2",
     "style-loader": "0.13.0",
+    "url-loader": "0.5.7",
     "webpack": "1.12.13",
     "webpack-dev-server": "1.14.1"
   }

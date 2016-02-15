@@ -4,7 +4,7 @@ const electron          = require('electron');
 const app               = electron.app;
 const format            = require('stringformat');
 const BrowserWindow     = electron.BrowserWindow;
-const viewsFolder       = format('file://{0}/app', __dirname);
+const viewsFolder       = format('file://{0}/', __dirname);
 var mainWindow          = null;
 
 app.on('window-all-closed', () => {

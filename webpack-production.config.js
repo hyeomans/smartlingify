@@ -1,13 +1,6 @@
 'use strict';
-const webpackStrip  = require('strip-loader');
-const devConfig     = require('./webpack.config');
+const devConfig         = require('./webpack.config');
 
-var stripLoader = {
-    test: [/\.js$/],
-    exclude: /node_modules/,
-    loader: webpackStrip.loader('console.log')
-}
-
-devConfig.module.loaders.push(stripLoader);
+devConfig.watch = false;
 
 module.exports = devConfig;
