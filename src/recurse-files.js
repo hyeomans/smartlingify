@@ -23,6 +23,7 @@ var projectId;
  *     absolutePath: '....',
  *     relativePath: '....',
  *     smartlingPath: '....',
+ *     locale: '.....'
  *     fileUri: '...', This is smartling file uri
  *     upload: {
  *       uri: '....', This is smartling upload file uri
@@ -86,6 +87,7 @@ function appendSiblings(files, options) {
                 absolutePath: format('{0}{1}.{2}', fullPathSplitted[0], locale, options.extension),
                 relativePath: format('{0}{1}.{2}', relativePathSplitted[0], locale, options.extension),
                 smartlingPath: smartlingPath,
+                locale: locale,
                 fileUri: format(smartlingSiblingFileUri, apiKey, smartlingPath, projectId, locale),
                 upload: {
                     uri: smartlingImport,
@@ -120,6 +122,7 @@ function recurseDirectory(options, matchRegex) {
                 files.push({
                     absolutePath: a,
                     relativePath: p,
+                    locale: 'en-US', //TODO: Get this from the user. Call it Root language.
                     fileUri: format(smartlingFileUri, apiKey, smartlingPath, projectId),
                     smartlingPath: smartlingPath,
                     upload: {
