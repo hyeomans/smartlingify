@@ -18,12 +18,12 @@ let stubs = {
     }
 };
 
-let downloadFiles = proxyquire(path.join('..', '..', 'src', 'download-files'), stubs);
+let downloadTempFiles = proxyquire(path.join('..', '..', 'src', 'download-temp-files'), stubs);
 
 describe('Download files', () => {
     it('should be fullfilled', () => {
         sinonRp.returns(Promise.resolve(''));
-        let result = downloadFiles();
+        let result = downloadTempFiles();
         return expect(result(files())).to.eventually.fulfilled;
     });
 
@@ -36,7 +36,7 @@ describe('Download files', () => {
         sinonRp.withArgs(siblingUri).returns(Promise.resolve(''));
         sinonRp.withArgs(nonExistentSibling).returns(Promise.reject(''));
 
-        let download = downloadFiles();
+        let download = downloadTempFiles();
         let result = download(files());
         expect(result).to.eventually.have.deep.property('[0].tempPath', '.tmp/Models/Resources/ErrorMessages.resx');
         expect(result).to.eventually.have.deep.property('[0].siblings[0].tempPath', '.tmp/Models/Resources/ErrorMessages.en-AU.resx');
@@ -50,6 +50,7 @@ function files() {
             absolutePath: '/Users/hyeomans/dev/my-opentable/Models/Resources/ErrorMessages.resx',
             relativePath: 'Models/Resources/ErrorMessages.resx',
             fileUri: 'https://api.smartling.com/v1/file/get?apiKey=mockApiKey&fileUri=./Models/Resources/ErrorMessages.resx&projectId=mockProjectId',
+            smartlingPath: './Models/Resources/ErrorMessages.resx',
             upload: {
                 uri: 'https://api.smartling.com/v1/file/upload'
             },
@@ -57,7 +58,8 @@ function files() {
                 {
                     absolutePath: '/Users/hyeomans/dev/my-opentable/Models/Resources/ErrorMessages.en-AU.resx',
                     relativePath: 'Models/Resources/ErrorMessages.en-AU.resx',
-                    fileUri: 'https://api.smartling.com/v1/file/get?apiKey=mockApiKey&fileUri=./Models/Resources/ErrorMessages.resx&projectId=mockProjectId&locale=en-AU'
+                    fileUri: 'https://api.smartling.com/v1/file/get?apiKey=mockApiKey&fileUri=./Models/Resources/ErrorMessages.resx&projectId=mockProjectId&locale=en-AU',
+                    smartlingPath: './Models/Resources/ErrorMessages.resx'
                 },
                 {
                     absolutePath: '/Users/hyeomans/dev/my-opentable/Models/Resources/ErrorMessages.en-GB.resx',
