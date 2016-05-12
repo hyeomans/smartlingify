@@ -1,6 +1,7 @@
 'use strict';
 /* global it, describe, before, beforeEach */
 let chai            = require('chai');
+let expect          = chai.expect;
 let chaiAsPromised  = require('chai-as-promised');
 let proxyquire      = require('proxyquire').noPreserveCache();
 let Promise         = require('bluebird');
@@ -8,7 +9,7 @@ let sinon           = require('sinon');
 
 let mockApiKey = 'mockApiKey';
 let mockProjectId = 'mockProjectId';
-let expect = chai.expect;
+
 
 chai.use(chaiAsPromised);
 let stubs = {

@@ -13,6 +13,7 @@
     "filewalker": "0.1.2",
     "fs-extra": "0.26.5",
     "fs-finder": "1.8.1",
+    "immutable": "3.8.1",
     "moment": "2.11.1",
     "request-promise": "2.0.0",
     "stringformat": "0.0.5",
